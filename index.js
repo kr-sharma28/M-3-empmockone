@@ -32,6 +32,7 @@ app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 
+//// blog ////
 //Blog//
 
 let mongoose = require("mongoose");
@@ -196,4 +197,15 @@ app.get("/memory", (req, res) => {
   const freeMemory = os.freemem();
   res.json({ freeMemory });
 });
+//Models//
+
+let mongoose = require("mongoose");
+
+let userSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+});
+
+module.exports = mongoose.model("User", userSchema);
 
