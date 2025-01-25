@@ -31,3 +31,16 @@ app.use("/blogs", blogRoutes);
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+//Models//
+
+let mongoose = require("mongoose");
+
+let userSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+});
+
+module.exports = mongoose.model("User", userSchema);
+
